@@ -66,7 +66,6 @@
                                 <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
                             </div>
                         </div>
-                        
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="dataTable">
                                 <thead>
@@ -74,6 +73,7 @@
                                         <th>Usuarios</th>
                                         <th>Correo</th>
                                         <th>Rol</th>
+                                        <th>Permisos</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -87,6 +87,15 @@
                                         <td><img class="rounded-circle mr-2" width="30" height="30" src="https://robohash.org/<?php echo $fila["correo_usr"]; ?>"><?php echo $fila["nombre_usr"]; ?></td>
                                         <td><?php echo $fila["correo_usr"]; ?></td>
                                         <td><?php echo $fila["nombre_rol"]; ?></td>
+                                        <td><a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalLoginAvatar"><?php 
+                                        
+                                        if($fila["id_rol"] == 2){
+
+                                          echo  '<i class="fa fa-unlock-alt" style="color:green" aria-hidden="true"></i>';
+                                        }else{
+                                            echo  '<i class="fa fa-lock" style="color:red" aria-hidden="true"></i>'; 
+                                        }
+                                       ?></a></td>
                                     </tr>
                                     <?php }  ?>
                                 </tbody>
@@ -95,7 +104,7 @@
                                         <td><strong>Usuario</strong></td>
                                         <td><strong>Correo</strong></td>
                                         <td><strong>Rol</strong></td>
-                                       
+                                        <td><strong>Permisos</strong></td>
                                     </tr>
                                 </tfoot>
                             </table>
