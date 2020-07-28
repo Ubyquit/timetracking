@@ -28,5 +28,4 @@ $consulta = "SELECT * FROM usuarios WHERE correo_usr = '$email'";
       }else{
         header('Location: ../index.html'); 
       }
-
 ?>
