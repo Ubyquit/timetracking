@@ -70,10 +70,14 @@
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Usuarios</th>
-                                        <th>Correo</th>
-                                        <th>Rol</th>
-                                        <th>Permisos</th>
+                                        <th>Tarea</th>
+                                        <th>Proyecto</th>
+                                        <th>Asignador</th>
+                                        <th>Responsable</th>
+                                        <th>Fecha de asignación</th>
+                                        <th>Fecha inicio</th>
+                                        <th>Fecha final</th>
+                                        <th>Estatus</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -81,32 +85,47 @@
                                 require_once '../conexion/conexion.php';
                                 /*Realizar una unión entre la tabla usuarios y la tabla roles y realizar saltos entre campos de ambas tablas para  
                                     visualizar todos los datos requeridos en el modulo de usuarios*/
-                                    $consulta = "SELECT * FROM usuarios INNER JOIN roles ON usuarios.roles_id_rol = roles.id_rol";
+                                    $consulta = "SELECT
+                                    id_detalle,
+                                    tareas.nombre_tarea,
+                                    proyectos.nombre_proyecto,
+                                    usuario1.nombre_usr as usuario1,
+                                    usuario2.nombre_usr as usuario2,
+                                    fecha_asignacion,
+                                    fecha_inicio,
+                                    fecha_fin,
+                                    estatus.nombre_estatus
+                                    FROM detalle
+                                    INNER JOIN tareas ON detalle.tareas_id_tarea = tareas.id_tarea
+                                    INNER JOIN proyectos ON detalle.proyectos_id_proyecto = proyectos.id_proyecto
+                                    INNER JOIN usuarios as usuario1 on detalle.id_asignador = usuario1.id_usuario
+                                    INNER JOIN usuarios as usuario2 on detalle.id_responsable = usuario2.id_usuario
+                                    INNER JOIN estatus ON detalle.estatus_id_estatus = estatus.id_estatus";
                                     $resultado = mysqli_query($mysqli, $consulta);
                                     while($fila = mysqli_fetch_array($resultado)){
                                     ?>
                                     <tr>
-                                        <!--Imagen predeterminada para usuarios, icono avatar https://robohash.org/-->
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="https://robohash.org/<?php echo $fila["correo_usr"]; ?>?set=set4"><?php echo $fila["nombre_usr"]; ?></td>
-                                        <td><?php echo $fila["correo_usr"]; ?></td>
-                                        <td><?php echo $fila["nombre_rol"]; ?></td>
-                                        <td><a href="permiso.php?id=<?php echo $fila["id_usuario"]?>" class="btn btn-default btn-rounded">  
-                                        <?php  
-                                        // Visualizador de cando dependiento al rol de usuario
-                                        if($fila["id_rol"] == 2){
-                                          echo  '<i class="fa fa-unlock-alt" style="color:green" aria-hidden="true"></i>';
-                                        }else{
-                                            echo  '<i class="fa fa-lock" style="color:red" aria-hidden="true"></i>'; 
-                                        }?></a></td>
+                                        <td><?php echo $fila["nombre_tarea"]; ?></td>
+                                        <td><?php echo $fila["nombre_proyecto"]; ?></td>
+                                        <td><?php echo $fila["usuario1"]; ?></td>
+                                        <td><?php echo $fila["usuario2"]; ?></td>
+                                        <td><?php echo $fila["fecha_asignacion"]; ?></td>
+                                        <td><?php echo $fila["fecha_inicio"]; ?></td>
+                                        <td><?php echo $fila["fecha_fin"]; ?></td>
+                                        <td><?php echo $fila["nombre_estatus"]; ?></td>
                                     </tr>
                                     <?php }  ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td><strong>Usuario</strong></td>
-                                        <td><strong>Correo</strong></td>
-                                        <td><strong>Rol</strong></td>
-                                        <td><strong>Permisos</strong></td>
+                                        <td><strong>Tarea</strong></td>
+                                        <td><strong>Proyecto</strong></td>
+                                        <td><strong>Asignador</strong></td>
+                                        <td><strong>Responsable</strong></td>
+                                        <td><strong>Fecha de asignación</strong></td>
+                                        <td><strong>Fecha inicio</strong></td>
+                                        <td><strong>Fecha final</strong></td>
+                                        <td><strong>Estatus</strong></td>
                                     </tr>
                                 </tfoot>
                             </table>

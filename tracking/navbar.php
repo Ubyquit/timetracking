@@ -15,7 +15,11 @@
                     <?php 
                       if($rol_session == 2){
                         echo  '<li class="nav-item" role="presentation"><a class="nav-link" href="usuarios.php"><i class="fas fa-table"></i><span>Usuarios</span></a></li>';
-                       }
+                        echo  '<li class="nav-item" role="presentation"><a class="nav-link" href="tareas_admin.php"><i class="fa fa-list-ul"></i><span>Tareas</span></a></li>';
+ 
+                      }else{
+                        echo '<li class="nav-item" role="presentation"><a class="nav-link" href="tareas_limitado.php"><i class="fa fa-list-ul"></i><span>Tareas limitado</span></a></li>';
+                      }
 
                       ?>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="blank.php"><i class="fas fa-user"></i><span>Blank</span></a></li>

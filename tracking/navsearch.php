@@ -105,22 +105,15 @@
                             <li class="nav-item dropdown no-arrow" role="presentation">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
                                 <!--Imagen predeterminada para usuarios, icono avatar https://robohash.org/-->
-                                <span class="d-none d-lg-inline mr-2 text-gray-600 small"><?php echo $user_session?></span><img class="border rounded-circle img-profile" src="https://robohash.org/<?php echo $user_email; ?>?set=set4"></a>
-                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
-                                       
-
+                                <span class="d-none d-lg-inline mr-2 text-gray-600 small"><?php echo strtoupper($user_session)?></span><img class="border rounded-circle img-profile" src="https://robohash.org/<?php echo $user_email; ?>"></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">                                  
                                         <?php 
-                                        
+                                        //Validación de la cuenta para visualizar el Activity log
                                         if($rol_session == 2){
-
                                           echo  '<a class="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Activity log</a>';
                                         }
-                                       
-                                         
+                                                                       
                                         ?>
-                                        
-                                        
-                                        
                                         <!--Logout-->
                                             <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="../acceso/logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
                     </div>
