@@ -84,7 +84,8 @@
                                     while($fila = mysqli_fetch_array($resultado)){
                                     ?>
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="https://robohash.org/<?php echo $fila["correo_usr"]; ?>"><?php echo $fila["nombre_usr"]; ?></td>
+                                        <!--Imagen predeterminada para usuarios, icono avatar https://robohash.org/-->
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="https://robohash.org/<?php echo $fila["correo_usr"]; ?>?set=set4"><?php echo $fila["nombre_usr"]; ?></td>
                                         <td><?php echo $fila["correo_usr"]; ?></td>
                                         <td><?php echo $fila["nombre_rol"]; ?></td>
                                         
