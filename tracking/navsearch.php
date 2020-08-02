@@ -79,6 +79,7 @@
                                             $resultado = mysqli_query($mysqli, $consulta);
                                             while($fila = mysqli_fetch_array($resultado)){
                                         ?>
+                                        
                                         <a class="d-flex align-items-center dropdown-item" href="#">
                                             <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="https://robohash.org/<?php echo $fila["correo_usr"]; ?>?set=set4">
                                                 <div class="bg-success status-indicator"></div>
