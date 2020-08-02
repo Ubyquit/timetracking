@@ -78,10 +78,13 @@
                                 </thead>
                                 <tbody>
                                 <?php 
+                                session_start();
+                                $varsesion = $_SESSION["id"];
                                 require_once '../conexion/conexion.php';
                                 /*Realizar una unión entre la tabla usuarios y la tabla roles y realizar saltos entre campos de ambas tablas para  
                                     visualizar todos los datos requeridos en el modulo de usuarios*/
-                                    $consulta = "SELECT * FROM usuarios INNER JOIN roles ON usuarios.roles_id_rol = roles.id_rol";
+                                    $consulta = "SELECT * FROM usuarios INNER JOIN roles ON usuarios.roles_id_rol = roles.id_rol
+                                    WHERE usuarios.id_usuario !=  $varsesion ORDER BY usuarios.id_usuario";
                                     $resultado = mysqli_query($mysqli, $consulta);
                                     while($fila = mysqli_fetch_array($resultado)){
                                     ?>

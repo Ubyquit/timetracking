@@ -77,6 +77,7 @@
                                         <th>Fecha de asignación</th>
                                         <th>Fecha inicio</th>
                                         <th>Fecha final</th>
+                                        <th>Tiempo restante</th>
                                         <th>Estatus</th>
                                     </tr>
                                 </thead>
@@ -94,6 +95,7 @@
                                     fecha_asignacion,
                                     fecha_inicio,
                                     fecha_fin,
+                                    DATEDIFF(fecha_fin,now()) AS tiempo_restante,
                                     estatus.nombre_estatus
                                     FROM detalle
                                     INNER JOIN tareas ON detalle.tareas_id_tarea = tareas.id_tarea
@@ -112,6 +114,7 @@
                                         <td><?php echo $fila["fecha_asignacion"]; ?></td>
                                         <td><?php echo $fila["fecha_inicio"]; ?></td>
                                         <td><?php echo $fila["fecha_fin"]; ?></td>
+                                        <td><?php echo $fila["tiempo_restante"]; ?></td>
                                         <td><?php echo $fila["nombre_estatus"]; ?></td>
                                     </tr>
                                     <?php }  ?>
@@ -125,6 +128,7 @@
                                         <td><strong>Fecha de asignación</strong></td>
                                         <td><strong>Fecha inicio</strong></td>
                                         <td><strong>Fecha final</strong></td>
+                                        <td><strong>Tiempo restante</strong></td>
                                         <td><strong>Estatus</strong></td>
                                     </tr>
                                 </tfoot>

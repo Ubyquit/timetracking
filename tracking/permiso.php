@@ -11,8 +11,7 @@
     require_once '../conexion/conexion.php';
     $id = $_GET['id'];
 
-        if($varsesion != $id){
-
+        
             $consulta_usuario = "SELECT * FROM usuarios WHERE id_usuario = '$id'";
             $resultado = mysqli_query($mysqli, $consulta_usuario);
             $fila = mysqli_fetch_array($resultado);
@@ -26,8 +25,6 @@
                 $consulta = "UPDATE usuarios SET roles_id_rol = 1 WHERE id_usuario = '$id'";
                 
             }
-
-        }
         
     mysqli_query($mysqli,$consulta);
     header("Location: usuarios.php");
