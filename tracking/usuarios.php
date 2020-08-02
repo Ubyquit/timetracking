@@ -87,16 +87,15 @@
                                         <td><img class="rounded-circle mr-2" width="30" height="30" src="https://robohash.org/<?php echo $fila["correo_usr"]; ?>"><?php echo $fila["nombre_usr"]; ?></td>
                                         <td><?php echo $fila["correo_usr"]; ?></td>
                                         <td><?php echo $fila["nombre_rol"]; ?></td>
-                                        <td><a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalLoginAvatar"><?php 
                                         
-                                        if($fila["id_rol"] == 2){
-
+                                        <td><a href="<?php echo $fila["correo_usr"]; ?>" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalLoginAvatar">
+                                        <?php  if($fila["id_rol"] == 2){
                                           echo  '<i class="fa fa-unlock-alt" style="color:green" aria-hidden="true"></i>';
                                         }else{
                                             echo  '<i class="fa fa-lock" style="color:red" aria-hidden="true"></i>'; 
-                                        }
-                                       ?></a></td>
+                                        }?></a></td>
                                     </tr>
+
                                     <?php }  ?>
                                 </tbody>
                                 <tfoot>
@@ -108,6 +107,7 @@
                                     </tr>
                                 </tfoot>
                             </table>
+                            
                         </div>
                         <div class="row">
                             <div class="col-md-6 align-self-center">
