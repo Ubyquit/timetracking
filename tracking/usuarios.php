@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
+
+
 </head>
 
 <body id="page-top">
@@ -60,10 +62,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 text-nowrap">
-                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
                             </div>
                             <div class="col-md-6">
-                                <div class="text-md-right dataTables_filter" id="dataTable_filter"><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+                                <!-- Botón crear usuario-->
+                                <div class="text-md-right">
+                                    <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="register.html"><i class="fas fa-user-plus fa-sm text-white-50"></i>&nbsp;Crear usuario</a>
+                                </div>
                             </div>
                         </div>
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
@@ -74,6 +78,8 @@
                                         <th>Correo</th>
                                         <th>Rol</th>
                                         <th>Permisos</th>
+                                        <th>Editar</th>
+                                        <th>Eliminar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -99,8 +105,13 @@
                                         if($fila["id_rol"] == 2){
                                           echo  '<i class="fa fa-unlock-alt" style="color:green" aria-hidden="true"></i>';
                                         }else{
-                                            echo  '<i class="fa fa-lock" style="color:red" aria-hidden="true"></i>'; 
+                                            echo  '<i class="fa fa-lock" style="color:gray" aria-hidden="true"></i>'; 
                                         }?></a></td>
+                                        <!--Editar usuario-->
+                                        <td><a href="edicion_usr.php?id=<?php echo $fila["id_usuario"]?>" class="btn btn-default btn-rounded"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></td> 
+                                        <!--Eliminar usuario-->
+                                        <td><a href="eliminar_usr.php?id=<?php echo $fila["id_usuario"]?>" class="btn btn-default btn-rounded"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></td> 
+
                                     </tr>
                                     <?php }  ?>
                                 </tbody>
@@ -110,26 +121,11 @@
                                         <td><strong>Correo</strong></td>
                                         <td><strong>Rol</strong></td>
                                         <td><strong>Permisos</strong></td>
+                                        <td><strong>Editar</strong></td>
+                                        <td><strong>Eliminar</strong></td>
                                     </tr>
                                 </tfoot>
-                            </table>
-                            
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 align-self-center">
-                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
-                            </div>
-                            <div class="col-md-6">
-                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
-                            </div>
+                            </table>    
                         </div>
                     </div>
                 </div>
