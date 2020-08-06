@@ -7,12 +7,12 @@
         }
         
     //Apartado de la query
-    require_once '../conexion/conexion.php';
+    require_once '../../conexion/conexion.php';
     $id = $_GET['id'];
 
         
             $consulta = "DELETE FROM usuarios WHERE id_usuario = '$id'";
             $resultado = mysqli_query($mysqli, $consulta);
 
-    header("Location: usuarios.php");
+    header("Location: ../usuarios.php");
     ?>

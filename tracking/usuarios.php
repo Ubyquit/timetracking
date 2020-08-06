@@ -38,7 +38,7 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <?php
-                include 'navbar.php';
+                include 'include/navbar.php';
                 ?>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -108,9 +108,9 @@
                                             echo  '<i class="fa fa-lock" style="color:gray" aria-hidden="true"></i>'; 
                                         }?></a></td>
                                         <!--Editar usuario-->
-                                        <td><a href="edicion_usr.php?id=<?php echo $fila["id_usuario"]?>" class="btn btn-default btn-rounded"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></td> 
+                                        <td><a href="acciones/edicion_usr.php?id=<?php echo $fila["id_usuario"]?>" class="btn btn-default btn-rounded"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></td> 
                                         <!--Eliminar usuario-->
-                                        <td><a href="eliminar_usr.php?id=<?php echo $fila["id_usuario"]?>" class="btn btn-default btn-rounded"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></td> 
+                                        <td><a href="acciones/eliminar_usr.php?id=<?php echo $fila["id_usuario"]?>" class="btn btn-default btn-rounded"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></td> 
 
                                     </tr>
                                     <?php }  ?>

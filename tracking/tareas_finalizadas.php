@@ -36,7 +36,7 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <?php
-                include 'navbar.php';
+                include 'include/navbar.php';
                 ?>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>

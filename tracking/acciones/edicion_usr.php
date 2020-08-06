@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Register - timetracking</title>
-    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="../../assets/fonts/fontawesome-all.min.css">
 </head>
 
 <body class="bg-gradient-primary">
@@ -16,7 +16,7 @@
             <div class="card-body p-0">
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-flex">
-                        <div class="flex-grow-1 bg-register-image" style="background-image: url(&quot;../assets/img/dogs/image4.jpeg&quot;);"></div>
+                        <div class="flex-grow-1 bg-register-image" style="background-image: url(&quot;../../assets/img/dogs/image4.jpeg&quot;);"></div>
                     </div>
                     <div class="col-lg-7">
                         <div class="p-5">
@@ -26,7 +26,7 @@
                             <?php 
                                 session_start();
                                 $varsesion = $_SESSION["id"];
-                                require_once '../conexion/conexion.php';
+                                require_once '../../conexion/conexion.php';
                                 /*Recibir la variable de id de la pagina de usuario para realizar 
                                 la edición de los datos de usuario*/
                                 $id = $_GET['id'];
@@ -46,7 +46,7 @@
                                 <input name="id" value="<?php echo $fila["id_usuario"]?>" type="hidden">  
                                 <button class="btn btn-primary btn-block text-white btn-user" type="submit">Cambiar</button>
                                 <!--Boton para cancelar operación de editar de usuario-->
-                                <a href="usuarios.php" class="btn btn-primary btn-block text-white btn-user">Cancelar</a>
+                                <a href="../usuarios.php" class="btn btn-primary btn-block text-white btn-user">Cancelar</a>
                                 <hr>
                             </form>
                         </div>
