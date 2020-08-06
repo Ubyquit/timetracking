@@ -94,7 +94,7 @@
                                     ?>
                                     <tr>
                                         <td><?php echo $contador; ?></td>
-                                        <td id="nombreproyecto<?php echo $fila['id_proyecto'];?>"><?php echo $fila["nombre_proyecto"]; ?></td>
+                                        <td id="nombreproyecto<?php echo $fila['id_proyecto'];?>" ><?php echo $fila["nombre_proyecto"]; ?></td>
                                          <!--Editar proyecto-->
                                         <td><button type="button" class="btn edit" value="<?php echo $fila['id_proyecto']; ?>"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></button></td>
                                         <!--Eliminar proyecto-->

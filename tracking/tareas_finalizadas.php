@@ -55,94 +55,101 @@
                 <h3 class="text-dark mb-4">Tareas</h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Lista de tareas</p>
+                        <p class="text-primary m-0 font-weight-bold">Lista de tareas finalizadas</p>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 text-nowrap">
-                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
                             </div>
                             <div class="col-md-6">
                                 <!-- Botón crear tarea-->
                                 <div class="text-md-right">
-                                <form class="form-inline" action="insertar_tarea.php " method="post">
-                                        <div class="form-group mx-sm-3 mb-2">
-                                            <input type="text" class="form-control" name="tarea" placeholder="Nueva tarea" required>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary mb-2">Crear Tarea</button>
-                                    </form>                                </div>
+                                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="asignar_tarea.php"><i class="fas fa-link fa-sm text-white-50"></i>&nbsp;Asignar tarea</a>    
+                            </div>
                         </div>
                         </div>
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Número Tarea</th>
-                                        <th>Nombre Tarea</th>
-                                        <th>Fecha Creación</th>
-                                        <th>Creado por</th>
-                                        <th>Editar</th>
-                                        <th>Eliminar</th>
+                                        <th>Tarea</th>
+                                        <th>Proyecto</th>
+                                        <th>Asignador</th>
+                                        <th>Responsable</th>
+                                        <th>Fecha de asignación</th>
+                                        <th>Fecha inicio</th>
+                                        <th>Fecha final</th>
+                                        <th>Estatus</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php 
-
-                                $contador = 1;
                                 session_start();
 
                                 $varsesion = $_SESSION["id"];
                                 require_once '../conexion/conexion.php';
                                 /*Realizar una unión entre la tabla usuarios y la tabla roles y realizar saltos entre campos de ambas tablas para  
                                     visualizar todos los datos requeridos en el modulo de usuarios*/
-                                    $consulta = "SELECT * FROM tareas
-                                    INNER JOIN usuarios ON tareas.usuarios_id_usuario = usuarios.id_usuario
-                                    WHERE usuarios_id_usuario = '$varsesion'";
+                                    $consulta = "SELECT
+                                    id_detalle,
+                                    tareas.nombre_tarea,
+                                    proyectos.nombre_proyecto,
+                                    usuario1.nombre_usr as usuario1,
+                                    usuario2.nombre_usr as usuario2,
+                                    fecha_asignacion,
+                                    fecha_inicio,
+                                    fecha_fin,
+                                    estatus.nombre_estatus
+                                    FROM detalle
+                                    INNER JOIN tareas ON detalle.tareas_id_tarea = tareas.id_tarea
+                                    INNER JOIN proyectos ON detalle.proyectos_id_proyecto = proyectos.id_proyecto
+                                    INNER JOIN usuarios as usuario1 on detalle.id_asignador = usuario1.id_usuario
+                                    INNER JOIN usuarios as usuario2 on detalle.id_responsable = usuario2.id_usuario
+                                    INNER JOIN estatus ON detalle.estatus_id_estatus = estatus.id_estatus
+                                    WHERE detalle.estatus_id_estatus = 3 AND detalle.id_responsable = '$varsesion'";
                                     $resultado = mysqli_query($mysqli, $consulta);
                                     while($fila = mysqli_fetch_array($resultado)){
                                     ?>
                                     <tr>
-                                        <td><?php echo $contador; ?></td>
-                                        <td id="nombretarea<?php echo $fila['id_tarea'];?>" ><?php echo $fila["nombre_tarea"]; ?></td>
-                                        <td><?php echo $fila["fecha_creacion"]; ?></td>
-                                        <td><?php echo $fila["nombre_usr"]; ?></td>
-                                         <!--Editar proyecto-->
-                                         <td><button type="button" class="btn edit" value="<?php echo $fila['id_tarea']; ?>"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></button></td>
-                                        <!--Eliminar proyecto-->
-                                        <td><a href="eliminar_tarea.php?id=<?php echo $fila["id_tarea"]?>" class="btn btn-default btn-rounded"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></td> 
+                                        <td><?php echo $fila["nombre_tarea"]; ?></td>
+                                        <td><?php echo $fila["nombre_proyecto"]; ?></td>
+                                        <td><?php echo $fila["usuario1"]; ?></td>
+                                        <td><?php echo $fila["usuario2"]; ?></td>
+                                        <td><?php echo $fila["fecha_asignacion"]; ?></td>
+                                        <td>
+                                            <?php if($fila["fecha_inicio"] == NULL){
+                                                echo '<a href="fecha_inicio.php?id='.$fila[id_detalle].'" class="btn btn-default btn-rounded"><i class="fa fa-clock" style="color:green" aria-hidden="true"></i>';
+                                            }else{
+                                                echo $fila["fecha_inicio"]; 
+                                            }
+                                            ?>
+                                        </td>
+                                        <td>
+                                        <?php if($fila["fecha_fin"] == NULL && $fila["fecha_inicio"] != NULL){
+                                                echo '<a href="fecha_fin.php?id='.$fila[id_detalle].'" class="btn btn-default btn-rounded"><i class="fa fa-check" style="color:green" aria-hidden="true"></i>';
+                                            }else{
+                                                echo $fila["fecha_inicio"]; 
+                                            }
+                                            ?>
+                                        </td>
+                                        <td><?php echo $fila["nombre_estatus"]; ?></td>
                                     </tr>
-                                    <?php 
-                                $contador++;
-                                }  ?>
+                                    <?php }  ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td><strong>Numero de Tarea</strong></td>
-                                        <td><strong>Nombre Tarea</strong></td>
-                                        <td><strong>Fecha Creación</strong></td>
-                                        <td><strong>Creado por</strong></td>
-                                        <td><strong>Editar</strong></td>
-                                        <td><strong>Eliminar</strong></td>
+                                        <td><strong>Tarea</strong></td>
+                                        <td><strong>Proyecto</strong></td>
+                                        <td><strong>Asignador</strong></td>
+                                        <td><strong>Responsable</strong></td>
+                                        <td><strong>Fecha de asignación</strong></td>
+                                        <td><strong>Fecha inicio</strong></td>
+                                        <td><strong>Fecha final</strong></td>
+                                        <td><strong>Estatus</strong></td>
                                     </tr>
                                 </tfoot>
                             </table>
                             
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 align-self-center">
-                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
-                            </div>
-                            <div class="col-md-6">
-                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -160,8 +167,6 @@
     <script src="../assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="../assets/js/theme.js"></script>
-    <?php include('modal/modal_edit_tarea.php'); ?>
-    <script src="js/custom_edit_tarea.js"></script>
 </body>
 
 </html>
