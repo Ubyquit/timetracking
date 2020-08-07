@@ -47,7 +47,7 @@
             <!--Navbar principal-->
 
             <?php
-                include 'navsearch.php';
+                include 'include/navsearch.php';
                 ?>
 
 

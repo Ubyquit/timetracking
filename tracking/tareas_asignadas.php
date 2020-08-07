@@ -47,7 +47,7 @@
             <!--Navbar principal-->
 
             <?php
-                include 'navsearch.php';
+                include 'include/navsearch.php';
                 ?>
 
 
@@ -128,7 +128,7 @@
                                         <?php if($fila["fecha_fin"] == NULL && $fila["fecha_inicio"] != NULL){
                                                 echo '<a href="fecha_fin.php?id='.$fila[id_detalle].'" class="btn btn-default btn-rounded"><i class="fa fa-check" style="color:green" aria-hidden="true"></i>';
                                             }else{
-                                                echo $fila["fecha_inicio"]; 
+                                                echo $fila["fecha_fin"]; 
                                             }
                                             ?>
                                         </td>

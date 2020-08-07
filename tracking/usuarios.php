@@ -49,9 +49,8 @@
             <!--Navbar principal-->
 
             <?php
-                include 'navsearch.php';
-                ?>
-
+                include 'include/navsearch.php';
+            ?>
 
             <div class="container-fluid">
                 <h3 class="text-dark mb-4">Usuarios</h3>

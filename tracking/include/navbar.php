@@ -13,7 +13,7 @@
 
 
 
-<ul class="nav navbar-nav text-light" id="accordionSidebar">
+          <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <?php 
                       if($rol_session == 2){
@@ -27,8 +27,9 @@
                                 </a>
                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                                   <div class="bg-white py-2 collapse-inner rounded">
-                                    <a class="collapse-item" href="tareas.php">Tareas</a>
-                                    <a class="collapse-item" href="tareas_asignadas.php">Mis tareas asignadas</a>
+                                    <a class="collapse-item" href="tareas.php">Crear tareas</a>
+                                    <a class="collapse-item" href="tareas_asignadas.php">Mis tareas</a>
+                                    <a class="collapse-item" href="tareas_asignadas_usr.php">Tareas asigandas</a>
                                     <a class="collapse-item" href="tareas_finalizadas.php">Tareas finalizadas</a>
                                   </div>
                                 </div>
