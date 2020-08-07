@@ -38,7 +38,6 @@
                 <?php
                 include 'include/navbar.php';
                 ?>
-                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">
@@ -64,7 +63,13 @@
                             <div class="col-md-6">
                                 <!-- Botón crear tarea-->
                                 <div class="text-md-right">
-                                <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="asignar_tarea.php"><i class="fas fa-link fa-sm text-white-50"></i>&nbsp;Asignar tarea</a>    
+                                <?php 
+                                if($rol_session == 2){
+                                    echo '<a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="asignar_tarea.php"><i class="fas fa-link fa-sm text-white-50"></i>&nbsp;Asignar tarea</a>';
+                                }else{
+                                    echo '<a class="btn btn-info btn-sm d-none d-sm-inline-block" role="button" href="asignar_tarea_limitado.php"><i class="fas fa-link fa-sm text-white-50"></i>&nbsp;Asignar tarea</a>';
+                                }
+                                ?>    
                             </div>
                         </div>
                         </div>

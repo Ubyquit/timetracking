@@ -36,6 +36,20 @@
                               </li>';
                         echo  '<li class="nav-item" role="presentation"><a class="nav-link" href="log_general.php"><i class="fa fa-list-alt"></i><span>Log General</span></a></li>';
                       }else{
+                        echo  '<!-- Nav Item - Pages Collapse Menu -->
+                        <li class="nav-item">
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                  <i class="fas fa-fw fa fa-tasks"></i>
+                                  <span>Tareas</span>
+                                </a>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                                  <div class="bg-white py-2 collapse-inner rounded">
+                                    <a class="collapse-item" href="tareas.php">Crear tareas</a>
+                                    <a class="collapse-item" href="tareas_asignadas.php">Mis tareas</a>
+                                    <a class="collapse-item" href="tareas_finalizadas.php">Tareas finalizadas</a>
+                                  </div>
+                                </div>
+                              </li>';
                       }
 
                       ?>
