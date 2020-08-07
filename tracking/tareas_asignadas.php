@@ -84,6 +84,7 @@
                                         <th>Fecha de asignación</th>
                                         <th>Fecha inicio</th>
                                         <th>Fecha final</th>
+                                        <th>Editar</th>
                                         <th>Estatus</th>
                                     </tr>
                                 </thead>
@@ -137,6 +138,16 @@
                                             }
                                             ?>
                                         </td>
+                                        <!--Editar Tarea-->
+                                        <td><form action="acciones/editar_mi_tarea.php" method="post">
+
+                                        <input id="asignar_tarea" name="asignar_tarea" type="hidden" value="<?php $fila["tareas_id_tarea"] ;?>">
+                                        <input id="asignar_proyecto" name="asignar_proyecto" type="hidden" value="<?php $fila["proyectos_id_proyecto"];?>">
+                                        <input id="asignar_responsable" name="asignar_responsable" type="hidden" value="<?php $fila["id_responsable"];?>">                                        
+
+                                        <button class="btn" type="submit"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></button>
+                                            </form>
+                                        </td>
                                         <td><?php echo $fila["nombre_estatus"]; ?></td>
                                     </tr>
                                     <?php }  ?>
@@ -150,6 +161,7 @@
                                         <td><strong>Fecha de asignación</strong></td>
                                         <td><strong>Fecha inicio</strong></td>
                                         <td><strong>Fecha final</strong></td>
+                                        <td><strong>Editar</strong></td>
                                         <td><strong>Estatus</strong></td>
                                     </tr>
                                 </tfoot>
