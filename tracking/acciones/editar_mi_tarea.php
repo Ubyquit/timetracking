@@ -24,6 +24,9 @@
                                 <h4 class="text-dark mb-4">Asignar Tarea!</h4>
                             </div>
                             <form class="user" action="editar_asignacion_tarea.php" method="post">
+
+                            <input name="id_detalle" value="<?php $id_detalle = $_POST['id_detalle']; echo $id_detalle ?>" type="hidden">
+
                                 <!--Lista tareas-->
                                 <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
@@ -47,7 +50,7 @@
                                                     WHERE usuarios_id_usuario = $varsesion";
                                                     $resultado = mysqli_query($mysqli, $consulta);
 
-                                                    echo'<option selected value="'.$fila2[nombre_tarea].'"> tarea actual '.$fila2[nombre_tarea].'</option>';
+                                                    echo'<option selected value="'.$fila2[id_tarea].'">'.$fila2[nombre_tarea].'</option>';
 
                                                     while($fila = mysqli_fetch_array($resultado)){
                                                     echo '<option value="'.$fila[id_tarea].'">'. $fila[nombre_tarea].' </option>';
@@ -62,15 +65,24 @@
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <label for="inputState">Asignar a proyecto</label>
                                             <select name="proyecto_asignado" class="form-control">
-                                                <option selected>Escoge un proyecto</option>
+                                                
                                                 <?php
                                                 require_once '../../conexion/conexion.php';
-                                                    /*Listar proyectos*/
+
+                                               //Recibiendo valores del formularo de proyecto
                                                     $asignar_proyecto = $_POST['asignar_proyecto'];
+                                                    $consulta2 = "SELECT * FROM proyectos
+                                                    WHERE id_proyecto = $asignar_proyecto";
+                                                    $resultado2 = mysqli_query($mysqli, $consulta2);
+                                                    $fila2 = mysqli_fetch_array($resultado2);
+                                                //Recibiendo valores del formularo de proyecto
+
+                                                    /*Listar proyectos*/
                                                     $consulta = "SELECT * FROM proyectos";
                                                     $resultado = mysqli_query($mysqli, $consulta);
-                                                    $fila2 = mysqli_fetch_array($resultado);
-                                                    echo'<option selected>'.$fila2[nombre_proyecto].'</option>';
+
+                                                    echo'<option selected value="'.$fila2[id_proyecto].'"> '.$fila2[nombre_proyecto].'</option>';
+
                                                     while($fila = mysqli_fetch_array($resultado)){
                                                     echo '<option value="'.$fila[id_proyecto].'">'. $fila[nombre_proyecto].' </option>';
                                                     }
@@ -84,12 +96,26 @@
                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                             <label for="inputState">Asignar responsable</label>
                                             <select name="usuario_responsable" class="form-control">
-                                                <option selected>Escoge un usuario</option>
                                                 <?php
                                                 require_once '../../conexion/conexion.php';
-                                                    /*Listar usuarios*/
+
+                                                //Recibiendo valores del formularo de usuario repsonsable
+                                                $asignar_responsable = $_POST['asignar_responsable'];
+                                                $consulta2 = "SELECT id_responsable, nombre_usr 
+                                                FROM detalle 
+                                                INNER JOIN usuarios 
+                                                ON detalle.id_responsable = usuarios.id_usuario 
+                                                where id_responsable = $asignar_responsable";
+                                                $resultado2 = mysqli_query($mysqli, $consulta2);
+                                                $fila2 = mysqli_fetch_array($resultado2);
+                                                //Recibiendo valores del formularo de usuario repsonsable   
+                                                
+                                                /*Listar usuarios*/
                                                     $consulta = "SELECT * FROM usuarios";
                                                     $resultado = mysqli_query($mysqli, $consulta);
+
+                                                    echo'<option selected value="'.$fila2[id_responsable].'"> '.$fila2[nombre_usr].'</option>';
+
                                                     while($fila = mysqli_fetch_array($resultado)){
                                                     echo '<option value="'.$fila[id_usuario].'">'. $fila[nombre_usr].' </option>';
                                                     }
@@ -98,10 +124,6 @@
                                         </div>
                                     </div>
                                 <!--Lista Responsable-->
-                                
-                                <!--Fechas tipo datetime
-                                    <p>Fecha Inicio: <input type="datetime-local" name="f_inicio"></p>
-                                    <p>Fecha Final: <input type="datetime-local" name="f_final"></p>-->
 
                                     <button class="btn btn-primary btn-block text-white btn-user" type="submit">Insertar datos</button>
                                 <!--Boton para cancelar operación de inserción de usuarios-->

@@ -98,6 +98,9 @@
                                     visualizar todos los datos requeridos en el modulo de usuarios*/
                                     $consulta = "SELECT
                                     id_detalle,
+                                    tareas_id_tarea,
+                                    proyectos_id_proyecto,
+                                    id_responsable,
                                     tareas.nombre_tarea,
                                     proyectos.nombre_proyecto,
                                     usuario1.nombre_usr as usuario1,
@@ -140,10 +143,10 @@
                                         </td>
                                         <!--Editar Tarea-->
                                         <td><form action="acciones/editar_mi_tarea.php" method="post">
-
-                                        <input id="asignar_tarea" name="asignar_tarea" type="hidden" value="<?php $fila["tareas_id_tarea"] ;?>">
-                                        <input id="asignar_proyecto" name="asignar_proyecto" type="hidden" value="<?php $fila["proyectos_id_proyecto"];?>">
-                                        <input id="asignar_responsable" name="asignar_responsable" type="hidden" value="<?php $fila["id_responsable"];?>">                                        
+                                        <input name="id_detalle" value="<?php echo $fila["id_detalle"] ?>" type="hidden">
+                                        <input name="asignar_tarea" value="<?php echo $fila["tareas_id_tarea"] ?>" type="hidden">
+                                        <input name="asignar_proyecto" value="<?php echo $fila["proyectos_id_proyecto"] ?>" type="hidden">
+                                        <input name="asignar_responsable" value="<?php echo $fila["id_responsable"] ?>" type="hidden">                                        
 
                                         <button class="btn" type="submit"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></button>
                                             </form>
