@@ -151,16 +151,29 @@
                                                 echo '<form action="acciones/editar_mi_tarea_limitado.php" method="post">';
                                             }
                                             ?>
-                                        
                                         <input name="id_detalle" value="<?php echo $fila["id_detalle"] ?>" type="hidden">
                                         <input name="asignar_tarea" value="<?php echo $fila["tareas_id_tarea"] ?>" type="hidden">
                                         <input name="asignar_proyecto" value="<?php echo $fila["proyectos_id_proyecto"] ?>" type="hidden">
-                                        <input name="asignar_responsable" value="<?php echo $fila["id_responsable"] ?>" type="hidden">                                        
-                                        <button class="btn" type="submit"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></button>
+                                        <input name="asignar_responsable" value="<?php echo $fila["id_responsable"] ?>" type="hidden">
+                                        
+                                        <?php 
+                                        if($fila["usuario1"] == $fila["usuario2"]){
+                                            echo '<button class="btn" type="submit"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></button>';
+                                        }
+                                        
+                                        ?>
+                                        
+                                        
                                             </form>
                                         </td>
+                                        
                                         <!--Eliminar usuario-->
-                                        <td><a href="acciones/eliminar_asignaciones.php?id=<?php echo $fila["id_detalle"]?>" class="btn btn-default btn-rounded"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></td> 
+                                        <td><?php 
+                                        if($fila["usuario1"] == $fila["usuario2"]){
+                                            echo '<a href="acciones/eliminar_asignaciones.php?id='; 
+                                            echo $fila["id_detalle"]; 
+                                            echo '" class="btn btn-default btn-rounded"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i>';
+                                        }?></td> 
                                         <td><?php echo $fila["nombre_estatus"]; ?></td>
                                     </tr>
                                     <?php }  ?>
