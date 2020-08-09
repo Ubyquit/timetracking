@@ -148,9 +148,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="../assets/js/theme.js"></script>
 
-
-    <?php include('modal/modal_edit_proyecto.php'); ?>
+    <!--Modal para editar el proyecto, este modal recibe el id del archivo js/custom_edit_proyecto.js-->
     <script src="js/custom_edit_proyecto.js"></script>
+    <?php include('modal/modal_edit_proyecto.php'); ?>
+    
 </body>
 
 </html>

@@ -23,7 +23,7 @@
                             <div class="text-center">
                                 <h4 class="text-dark mb-4">Editar mi tarea!</h4>
                             </div>
-                            <form class="user" action="editar_asignacion_tarea.php" method="post">
+                            <form class="user" action="editar_asignacion_tarea_limitado.php" method="post">
 
                             <input name="id_detalle" value="<?php $id_detalle = $_POST['id_detalle']; echo $id_detalle ?>" type="hidden">
 
@@ -91,39 +91,6 @@
                                         </div>
                                     </div>
                                 <!--Lista proyectos-->
-                                <!--Lista Responsable-->
-                                    <div class="form-group row">
-                                        <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <label for="inputState">Asignar responsable</label>
-                                            <select name="usuario_responsable" class="form-control">
-                                                <?php
-                                                require_once '../../conexion/conexion.php';
-
-                                                //Recibiendo valores del formularo de usuario repsonsable
-                                                $asignar_responsable = $_POST['asignar_responsable'];
-                                                $consulta2 = "SELECT id_responsable, nombre_usr 
-                                                FROM detalle 
-                                                INNER JOIN usuarios 
-                                                ON detalle.id_responsable = usuarios.id_usuario 
-                                                where id_responsable = $asignar_responsable";
-                                                $resultado2 = mysqli_query($mysqli, $consulta2);
-                                                $fila2 = mysqli_fetch_array($resultado2);
-                                                //Recibiendo valores del formularo de usuario repsonsable   
-                                                
-                                                /*Listar usuarios*/
-                                                    $consulta = "SELECT * FROM usuarios";
-                                                    $resultado = mysqli_query($mysqli, $consulta);
-
-                                                    echo'<option selected value="'.$fila2[id_responsable].'"> '.$fila2[nombre_usr].'</option>';
-
-                                                    while($fila = mysqli_fetch_array($resultado)){
-                                                    echo '<option value="'.$fila[id_usuario].'">'. $fila[nombre_usr].' </option>';
-                                                    }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                <!--Lista Responsable-->
 
                                     <button class="btn btn-primary btn-block text-white btn-user" type="submit">Insertar datos</button>
                                 <!--Boton para cancelar operación de inserción de usuarios-->

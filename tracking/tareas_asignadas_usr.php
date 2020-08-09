@@ -55,7 +55,7 @@
                 <h3 class="text-dark mb-4">Tareas</h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Lista de tareas finalizadas</p>
+                        <p class="text-primary m-0 font-weight-bold">Lista de tareas asignadas</p>
                     </div>
                     <div class="card-body">
                         <div class="row">

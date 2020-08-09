@@ -54,7 +54,7 @@
                 <h3 class="text-dark mb-4">Tareas</h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Lista de tareas asignadas</p>
+                        <p class="text-primary m-0 font-weight-bold">Lista de mis tareas</p>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -142,12 +142,19 @@
                                             ?>
                                         </td>
                                         <!--Editar Tarea-->
-                                        <td><form action="acciones/editar_mi_tarea.php" method="post">
+                                        <td>
+                                            <?php 
+                                            if($rol_session == 2){
+                                                echo '<form action="acciones/editar_mi_tarea.php" method="post">';
+                                            }else{
+                                                echo '<form action="acciones/editar_mi_tarea_limitado.php" method="post">';
+                                            }
+                                            ?>
+                                        
                                         <input name="id_detalle" value="<?php echo $fila["id_detalle"] ?>" type="hidden">
                                         <input name="asignar_tarea" value="<?php echo $fila["tareas_id_tarea"] ?>" type="hidden">
                                         <input name="asignar_proyecto" value="<?php echo $fila["proyectos_id_proyecto"] ?>" type="hidden">
                                         <input name="asignar_responsable" value="<?php echo $fila["id_responsable"] ?>" type="hidden">                                        
-
                                         <button class="btn" type="submit"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></button>
                                             </form>
                                         </td>
