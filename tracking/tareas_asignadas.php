@@ -85,6 +85,7 @@
                                         <th>Fecha inicio</th>
                                         <th>Fecha final</th>
                                         <th>Editar</th>
+                                        <th>Eliminar</th>
                                         <th>Estatus</th>
                                     </tr>
                                 </thead>
@@ -158,6 +159,8 @@
                                         <button class="btn" type="submit"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></button>
                                             </form>
                                         </td>
+                                        <!--Eliminar usuario-->
+                                        <td><a href="acciones/eliminar_asignaciones.php?id=<?php echo $fila["id_detalle"]?>" class="btn btn-default btn-rounded"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></td> 
                                         <td><?php echo $fila["nombre_estatus"]; ?></td>
                                     </tr>
                                     <?php }  ?>
@@ -172,6 +175,7 @@
                                         <td><strong>Fecha inicio</strong></td>
                                         <td><strong>Fecha final</strong></td>
                                         <td><strong>Editar</strong></td>
+                                        <td><strong>Eliminar</strong></td>
                                         <td><strong>Estatus</strong></td>
                                     </tr>
                                 </tfoot>
