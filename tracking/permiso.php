@@ -41,11 +41,6 @@
 
            mysqli_query($mysqli,$consulta);
 
-
-                
-                
-
-          
-            header("Location: usuarios.php");
+           header("Location: usuarios.php");
     ?>
     
