@@ -61,11 +61,7 @@
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
                                         <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Mis tareas</span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span><?php 
-                                        
-                                        
-                                        
-                                        ?></span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span><?php include "include/mis_tareas.php"?></span></div>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                                 </div>
@@ -78,7 +74,7 @@
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
                                         <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Mis tareas pendientes</span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>$215,000</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span><?php include "include/mis_tareas_pendientes.php"?></span></div>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-clock fa-2x text-gray-300"></i></div>
                                 </div>
@@ -93,7 +89,7 @@
                                         <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>Tareas Finalizadas</span></div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
-                                                <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span>50%</span></div>
+                                                <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span><?php include "include/mis_tareas_finalizadas.php"?></span></div>
                                             </div>
                                             <div class="col">
                                                 <div class="progress progress-sm">
@@ -113,7 +109,7 @@
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
                                         <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Tareas asignadas</span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>18</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span><?php include "include/tareas_asignadas.php"?></span></div>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
                                 </div>
