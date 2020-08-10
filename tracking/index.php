@@ -123,7 +123,7 @@
                                 <thead>
                                     <tr>
                                         <th>Proyecto</th>
-                                        <th>Tiempo de duración del proyecto</th>
+                                        <th>Tiempo en horas del proyecto en tareas finalizadas</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -135,32 +135,27 @@
                                 /*Realizar una unión entre la tabla usuarios y la tabla roles y realizar saltos entre campos de ambas tablas para  
                                     visualizar todos los datos requeridos en el modulo de usuarios*/
                                     $consulta = "SELECT
-                                    id_detalle,
                                     proyectos.nombre_proyecto,
-                                    fecha_asignacion,
-                                    fecha_fin,
-                                    DATEDIFF(fecha_fin,fecha_asignacion) AS proyecto_finalizado,
-                                    estatus.nombre_estatus
+                                    SEC_TO_TIME(SUM(TIMESTAMPDIFF(SECOND,fecha_inicio,fecha_fin))) AS proyecto_finalizado
                                     FROM detalle
                                     INNER JOIN proyectos ON detalle.proyectos_id_proyecto = proyectos.id_proyecto
-                                    INNER JOIN estatus ON detalle.estatus_id_estatus = estatus.id_estatus";
+                                    WHERE estatus_id_estatus = 3 GROUP BY proyectos_id_proyecto";
                                     $resultado = mysqli_query($mysqli, $consulta);
                                     while($fila = mysqli_fetch_array($resultado)){
                                     ?>
                                     <tr>
-                                        <td><?php echo $fila["nombre_proyecto"]; ?></td>
-                                        <td><?php echo $fila["proyecto_finalizado"]; ?></td>
+                                        <td><?php echo $fila["nombre_proyecto"];?></td>
+                                        <td><?php echo $fila["proyecto_finalizado"];?> Hrs.</td>
                                     </tr>
                                     <?php }  ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <td><strong>Proyecto</strong></td>
-                                        <td><strong>Tarea</strong></td>
+                                        <td><strong>Tiempo en horas del proyecto en tareas finalizadas</strong></td>
                                     </tr>
                                 </tfoot>
                             </table>
-                            
                         </div>
                     </div>
                 </div>

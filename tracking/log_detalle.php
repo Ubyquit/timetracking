@@ -12,6 +12,8 @@
     }
 
     ?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -50,35 +52,13 @@
 
 
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">Log general</h3>
+                <h3 class="text-dark mb-4">Log detalle</h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Historial de cambios</p>
+                        <p class="text-primary m-0 font-weight-bold">Historial de cambios por usuario</p>
                     </div>
                     <div class="card-body">
-                    <div class="row">
-                            <div class="col-md-6 text-nowrap">
-                            </div>
-                            <div class="col-md-6">
-                                <div class="text-md-right" id="dataTable_filter">
-                                    <form class="form-inline" action="log_detalle.php " method="GET">
-                                        <div class="form-group mx-sm-3 mb-2">
-                                        <select name="id" class="form-control">
-                                                <option selected>Escoge un usuario</option>
-                                                <?php
-                                                require_once '../conexion/conexion.php';
-                                                    /*Listar usuarios*/
-                                                    $consulta = "SELECT * FROM usuarios";
-                                                    $resultado = mysqli_query($mysqli, $consulta);
-                                                    while($fila = mysqli_fetch_array($resultado)){
-                                                    echo '<option value="'.$fila[id_usuario].'">'. $fila[nombre_usr].' </option>';
-                                                    }
-                                                ?>
-                                            </select>                                        </div>
-                                        <button type="submit" class="btn btn-primary mb-2">Ver detalle usuario</button>
-                                    </form>
-                                </div>
-                            </div>
+                        
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="dataTable">
                                 <thead>
@@ -93,14 +73,17 @@
                                 </thead>
                                 <tbody>
                                 <?php
+
+                                        $id = $_GET["id"];
                                         require_once '../conexion/conexion.php';
                                         /*Realizar seleccion de los ultimos 5 movimientos en la tabla logs*/
-                                            $consulta = "SELECT * FROM logs INNER JOIN usuarios ON logs.responsable_log = usuarios.id_usuario";
+                                            $consulta = "SELECT * FROM logs INNER JOIN usuarios ON logs.responsable_log = usuarios.id_usuario
+                                            WHERE usuarios.id_usuario = '$id'";
                                             $resultado = mysqli_query($mysqli, $consulta);
                                             while($fila = mysqli_fetch_array($resultado)){
                                     ?>
                                     <tr>
-                                       <td><a href="log_detalle.php?id=<?php echo $fila["id_usuario"]; ?>"><?php echo $fila["nombre_usr"]; ?></a></td>
+                                       <td><?php echo $fila["nombre_usr"]; ?></td>
                                         <td><?php echo $fila["accion_log"]; ?></td>
                                         <td><?php echo $fila["descripcion_log"]; ?></td>
                                         <td><?php echo $fila["fuente_log"]; ?></td>
