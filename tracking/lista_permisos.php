@@ -94,11 +94,32 @@
                                     ?>
                                     <tr>
                                         <td><?php echo $contador; ?></td>
-                                        <td id="nombrepermiso<?php echo $fila['id_rol'];?>" ><?php echo $fila["nombre_rol"]; ?></td>
+                                        
+                                        <td id="nombrepermiso<?php echo $fila['id_rol'];?>" ><?php 
+                                        //Condición para evitar borrar o modificar roles por descto "Administrador y Limitado"
+                                        if($fila['id_rol'] == 1 or $fila['id_rol'] == 2){
+                                            echo $fila['nombre_rol']; 
+                                            echo ' <i class="fas fa-lock"></i>';
+                                        }else{
+                                            echo $fila['nombre_rol']; 
+                                        }?></td>
+
                                          <!--Editar permiso-->
-                                        <td><button type="button" class="btn edit" value="<?php echo $fila['id_rol']; ?>"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></button></td>
+                                        <td><button type="button" class="btn edit" value="<?php 
+                                        //Condición para evitar borrar o modificar roles por descto "Administrador y Limitado"
+                                        if($fila['id_rol'] == 1 or $fila['id_rol'] == 2){
+                                        }else{
+                                            echo $fila['id_rol']; 
+                                        }?>"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></button></td>
+                                        
                                         <!--Eliminar permiso-->
-                                        <td><a href="acciones/eliminar_permisos.php?id=<?php echo $fila["id_rol"]?>" class="btn btn-default btn-rounded"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></td> 
+                                        <td><a href="acciones/eliminar_permisos.php?id=<?php 
+                                        //Condición para evitar borrar o modificar roles por descto "Administrador y Limitado"
+                                        if($fila['id_rol'] == 1 or $fila['id_rol'] == 2){
+                                        }else{
+                                            echo $fila['id_rol']; 
+                                        }?>" class="btn btn-default btn-rounded"><i class="fa fa-trash" style="color:red" aria-hidden="true"></i></td> 
+                                    
                                     </tr>
                                     <?php 
                                     $contador ++;
