@@ -24,7 +24,9 @@ $consulta = "SELECT * FROM usuarios WHERE correo_usr = '$email'";
       }
       
       if($respuesta==1){
+
         header('Location: ../tracking/index.php');
+
       }else{
         header('Location: ../index.html'); 
       }

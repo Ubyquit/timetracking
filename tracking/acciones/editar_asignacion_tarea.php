@@ -1,7 +1,6 @@
 <?php
 
     session_start();
-
     $varsesion = $_SESSION["id"];
     $rol_session = $_SESSION["rol"];
 
@@ -16,10 +15,14 @@
     
     $consulta = "UPDATE detalle SET tareas_id_tarea = '$tareas_id_tarea', proyectos_id_proyecto = '$proyectos_id_proyecto',
     id_responsable = '$id_responsable' where id_detalle = $id_detalle";
+    $resultado = mysqli_query($mysqli,$consulta);
 
-    //$consulta ="INSERT INTO detalle(tareas_id_tarea, proyectos_id_proyecto, id_asignador, id_responsable, estatus_id_estatus) 
-   // VALUES ('$tareas_id_tarea', '$proyectos_id_proyecto', '$varsesion', '$id_responsable', 1)";
-    mysqli_query($mysqli,$consulta);
+    if($resultado == 1){
+        
+        $consulta2 =  "INSERT INTO logs (accion_log, descripcion_log, fuente_log, fecha_log, responsable_log) 
+            VALUES ('UPDATE', 'Se han actualizado la asignacion al usuario $id_responsable', 'Tareas', now(), '$varsesion')";
+            mysqli_query($mysqli, $consulta2);
+        }
 
     header("Location: ../tareas_asignadas.php");
 
