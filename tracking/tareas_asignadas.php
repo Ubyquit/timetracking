@@ -79,6 +79,7 @@
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
+                                        <th>Id</th>
                                         <th>Tarea</th>
                                         <th>Proyecto</th>
                                         <th>Asignador</th>
@@ -123,6 +124,7 @@
                                     while($fila = mysqli_fetch_array($resultado)){
                                     ?>
                                     <tr>
+                                        <td><?php echo $fila["id_detalle"]; ?></td>
                                         <td><?php echo $fila["nombre_tarea"]; ?></td>
                                         <td><?php echo $fila["nombre_proyecto"]; ?></td>
                                         <td><?php echo $fila["usuario1"]; ?></td>
@@ -182,6 +184,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
+                                        <td><strong>Id</strong></td>
                                         <td><strong>Tarea</strong></td>
                                         <td><strong>Proyecto</strong></td>
                                         <td><strong>Asignador</strong></td>
