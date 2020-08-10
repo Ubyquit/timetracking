@@ -54,6 +54,7 @@
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
                     <h3 class="text-dark mb-0">Dashboard</h3>
                 </div>
+                <!--Esta sección me muestra datos generales de mis tareas-->
                 <div class="row">
                     <div class="col-md-6 col-xl-3 mb-4">
                         <div class="card shadow border-left-primary py-2">
@@ -112,6 +113,7 @@
                         </div>
                     </div>
                 </div>
+                <!--Esta sección me muestra datos generales de mis tareas-->
                 <div class="container-fluid">
                 <h3 class="text-dark mb-4">Tareas</h3>
                 <div class="card shadow">
