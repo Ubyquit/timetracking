@@ -145,13 +145,8 @@
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Tarea</th>
                                         <th>Proyecto</th>
-                                        <th>Asignador</th>
-                                        <th>Responsable</th>
-                                        <th>Fecha de asignación</th>
-                                        <th>Fecha inicio</th>
-                                        <th>Fecha final</th>
+                                        <th>Tiempo de duración del proyecto</th>      
                                         <th>Estatus</th>
                                     </tr>
                                 </thead>
@@ -165,59 +160,28 @@
                                     visualizar todos los datos requeridos en el modulo de usuarios*/
                                     $consulta = "SELECT
                                     id_detalle,
-                                    tareas.nombre_tarea,
                                     proyectos.nombre_proyecto,
-                                    usuario1.nombre_usr as usuario1,
-                                    usuario2.nombre_usr as usuario2,
                                     fecha_asignacion,
-                                    fecha_inicio,
                                     fecha_fin,
+                                    DATEDIFF(fecha_fin,fecha_asignacion) AS proyecto_finalizado,
                                     estatus.nombre_estatus
                                     FROM detalle
-                                    INNER JOIN tareas ON detalle.tareas_id_tarea = tareas.id_tarea
                                     INNER JOIN proyectos ON detalle.proyectos_id_proyecto = proyectos.id_proyecto
-                                    INNER JOIN usuarios as usuario1 on detalle.id_asignador = usuario1.id_usuario
-                                    INNER JOIN usuarios as usuario2 on detalle.id_responsable = usuario2.id_usuario
-                                    INNER JOIN estatus ON detalle.estatus_id_estatus = estatus.id_estatus
-                                    WHERE detalle.estatus_id_estatus = 3 AND detalle.id_responsable = '$varsesion'";
+                                    INNER JOIN estatus ON detalle.estatus_id_estatus = estatus.id_estatus";
                                     $resultado = mysqli_query($mysqli, $consulta);
                                     while($fila = mysqli_fetch_array($resultado)){
                                     ?>
                                     <tr>
-                                        <td><?php echo $fila["nombre_tarea"]; ?></td>
                                         <td><?php echo $fila["nombre_proyecto"]; ?></td>
-                                        <td><?php echo $fila["usuario1"]; ?></td>
-                                        <td><?php echo $fila["usuario2"]; ?></td>
-                                        <td><?php echo $fila["fecha_asignacion"]; ?></td>
-                                        <td>
-                                            <?php if($fila["fecha_inicio"] == NULL){
-                                                echo '<a href="fecha_inicio.php?id='.$fila[id_detalle].'" class="btn btn-default btn-rounded"><i class="fa fa-clock" style="color:green" aria-hidden="true"></i>';
-                                            }else{
-                                                echo $fila["fecha_inicio"]; 
-                                            }
-                                            ?>
-                                        </td>
-                                        <td>
-                                        <?php if($fila["fecha_fin"] == NULL && $fila["fecha_inicio"] != NULL){
-                                                echo '<a href="fecha_fin.php?id='.$fila[id_detalle].'" class="btn btn-default btn-rounded"><i class="fa fa-check" style="color:green" aria-hidden="true"></i>';
-                                            }else{
-                                                echo $fila["fecha_fin"]; 
-                                            }
-                                            ?>
-                                        </td>
+                                        <td><?php echo $fila["proyecto_finalizado"]; ?></td>
                                         <td><?php echo $fila["nombre_estatus"]; ?></td>
                                     </tr>
                                     <?php }  ?>
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td><strong>Tarea</strong></td>
                                         <td><strong>Proyecto</strong></td>
-                                        <td><strong>Asignador</strong></td>
-                                        <td><strong>Responsable</strong></td>
-                                        <td><strong>Fecha de asignación</strong></td>
-                                        <td><strong>Fecha inicio</strong></td>
-                                        <td><strong>Fecha final</strong></td>
+                                        <td><strong>Tarea</strong></td>
                                         <td><strong>Estatus</strong></td>
                                     </tr>
                                 </tfoot>
