@@ -164,14 +164,11 @@
                                         if($fila["usuario1"] == $fila["usuario2"]){
                                             echo '<button class="btn" type="submit"><i class="fa fa-cog" style="color:orange" aria-hidden="true"></i></button>';
                                         }
-                                        
-                                        ?>
-                                        
-                                        
-                                            </form>
+                                        ?>   
+                                        </form>
                                         </td>
                                         
-                                        <!--Eliminar usuario-->
+                                        <!--Eliminar asiganacion-->
                                         <td><?php 
                                         if($fila["usuario1"] == $fila["usuario2"]){
                                             echo '<a href="acciones/eliminar_asignaciones.php?id='; 
