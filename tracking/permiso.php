@@ -24,7 +24,7 @@
                 $consulta = "UPDATE usuarios SET roles_id_rol = 2 WHERE id_usuario = '$id'";
 
                 $consulta2 =  "INSERT INTO logs (accion_log, descripcion_log, fuente_log, fecha_log, responsable_log) 
-                VALUES ('UPDATE', 'Se ha actualizado el permiso del usuario $fila[nombre_usr]', 'Usuario', now(), '$varsesion')";
+                VALUES ('UPDATE', 'Se ha actualizado el permiso del usuario $fila[nombre_usr] a Administrador', 'Usuarios', now(), '$varsesion')";
                 mysqli_query($mysqli, $consulta2);
 
 
@@ -35,7 +35,7 @@
                 $consulta = "UPDATE usuarios SET roles_id_rol = 1 WHERE id_usuario = '$id'";
 
                 $consulta2 =  "INSERT INTO logs (accion_log, descripcion_log, fuente_log, fecha_log, responsable_log) 
-                VALUES ('UPDATE', 'Se ha actualizado el permiso del usuario $fila[nombre_usr]', 'Usuarios', now(), '$varsesion')";
+                VALUES ('UPDATE', 'Se ha actualizado el permiso del usuario $fila[nombre_usr] a Limitado', 'Usuarios', now(), '$varsesion')";
                 mysqli_query($mysqli, $consulta2);
             }
 

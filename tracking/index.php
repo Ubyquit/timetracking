@@ -64,7 +64,7 @@
                                         <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Mis tareas</span></div>
                                         <div class="text-dark font-weight-bold h5 mb-0"><span><?php include "include/mis_tareas.php"?></span></div>
                                     </div>
-                                    <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                                    <div class="col-auto"><a href="tareas_asignadas.php"><i class="fas fa-calendar fa-2x text-primary"></i></a></div>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
                                         <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Mis tareas pendientes</span></div>
                                         <div class="text-dark font-weight-bold h5 mb-0"><span><?php include "include/mis_tareas_pendientes.php"?></span></div>
                                     </div>
-                                    <div class="col-auto"><i class="fas fa-clock fa-2x text-gray-300"></i></div>
+                                    <div class="col-auto"><a href="tareas_asignadas.php"><i class="fas fa-clock fa-2x text-success"></i></a></div>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto"><i class="fas fa-tasks fa-2x text-gray-300"></i></div>
+                                    <div class="col-auto"><a href="tareas_finalizadas.php"><i class="fas fa-tasks fa-2x text-info"></i></a></div>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                         <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Tareas asignadas</span></div>
                                         <div class="text-dark font-weight-bold h5 mb-0"><span><?php include "include/tareas_asignadas.php"?></span></div>
                                     </div>
-                                    <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
+                                    <div class="col-auto"><a href="tareas_asignadas_usr.php"><i class="fas fa-clipboard-list fa-2x text-warning"></i></a></div>
                                 </div>
                             </div>
                         </div>

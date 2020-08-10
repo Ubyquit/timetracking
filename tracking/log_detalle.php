@@ -58,7 +58,29 @@
                         <p class="text-primary m-0 font-weight-bold">Historial de cambios por usuario</p>
                     </div>
                     <div class="card-body">
-                        
+                    <div class="row">
+                            <div class="col-md-6 text-nowrap">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right" id="dataTable_filter">
+                                    <form class="form-inline" action="log_detalle.php " method="GET">
+                                        <div class="form-group mx-sm-3 mb-2">
+                                        <select name="id" class="form-control">
+                                                <option selected>Escoge un usuario</option>
+                                                <?php
+                                                require_once '../conexion/conexion.php';
+                                                    /*Listar usuarios*/
+                                                    $consulta = "SELECT * FROM usuarios";
+                                                    $resultado = mysqli_query($mysqli, $consulta);
+                                                    while($fila = mysqli_fetch_array($resultado)){
+                                                    echo '<option value="'.$fila[id_usuario].'">'. $fila[nombre_usr].' </option>';
+                                                    }
+                                                ?>
+                                            </select>                                        </div>
+                                        <button type="submit" class="btn btn-primary mb-2">Ver detalle usuario</button>
+                                    </form>
+                                </div>
+                            </div>
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="dataTable">
                                 <thead>
@@ -68,12 +90,10 @@
                                         <th>Descripción</th>
                                         <th>Fuente</th>
                                         <th>Fecha cambio</th>
-                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-
                                         $id = $_GET["id"];
                                         require_once '../conexion/conexion.php';
                                         /*Realizar seleccion de los ultimos 5 movimientos en la tabla logs*/
