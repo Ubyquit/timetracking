@@ -53,7 +53,6 @@
             <div class="container-fluid">
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
                     <h3 class="text-dark mb-0">Dashboard</h3>
-                    <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-user-plus fa-sm text-white-50"></i>&nbsp;Generate Report</a>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-xl-3 mb-4">
@@ -61,8 +60,12 @@
                             <div class="card-body">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
-                                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Earnings (monthly)</span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>$40,000</span></div>
+                                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Mis tareas</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span><?php 
+                                        
+                                        
+                                        
+                                        ?></span></div>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                                 </div>
@@ -74,10 +77,10 @@
                             <div class="card-body">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
-                                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Earnings (annual)</span></div>
+                                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Mis tareas pendientes</span></div>
                                         <div class="text-dark font-weight-bold h5 mb-0"><span>$215,000</span></div>
                                     </div>
-                                    <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                    <div class="col-auto"><i class="fas fa-clock fa-2x text-gray-300"></i></div>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +90,7 @@
                             <div class="card-body">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
-                                        <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>Tasks</span></div>
+                                        <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>Tareas Finalizadas</span></div>
                                         <div class="row no-gutters align-items-center">
                                             <div class="col-auto">
                                                 <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span>50%</span></div>
@@ -99,7 +102,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
+                                    <div class="col-auto"><i class="fas fa-tasks fa-2x text-gray-300"></i></div>
                                 </div>
                             </div>
                         </div>
@@ -109,10 +112,10 @@
                             <div class="card-body">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
-                                        <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Pending Requests</span></div>
+                                        <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Tareas asignadas</span></div>
                                         <div class="text-dark font-weight-bold h5 mb-0"><span>18</span></div>
                                     </div>
-                                    <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
+                                    <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
                                 </div>
                             </div>
                         </div>
@@ -124,30 +127,12 @@
                     <div class="card-header py-3">
                         <p class="text-primary m-0 font-weight-bold">Lista de tareas finalizadas</p>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6 text-nowrap">
-                            </div>
-                            <div class="col-md-6">
-                                <!-- Botón crear tarea-->
-                                <div class="text-md-right">
-                                <?php 
-                                if($rol_session == 2){
-                                    echo '<a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="asignar_tarea.php"><i class="fas fa-link fa-sm text-white-50"></i>&nbsp;Asignar tarea</a>';
-                                }else{
-                                    echo '<a class="btn btn-info btn-sm d-none d-sm-inline-block" role="button" href="asignar_tarea_limitado.php"><i class="fas fa-link fa-sm text-white-50"></i>&nbsp;Asignar tarea</a>';
-                                }
-                                ?>
-                                </div>
-                        </div>
-                        </div>
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                             <table class="table my-0" id="dataTable">
                                 <thead>
                                     <tr>
                                         <th>Proyecto</th>
-                                        <th>Tiempo de duración del proyecto</th>      
-                                        <th>Estatus</th>
+                                        <th>Tiempo de duración del proyecto</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -174,7 +159,6 @@
                                     <tr>
                                         <td><?php echo $fila["nombre_proyecto"]; ?></td>
                                         <td><?php echo $fila["proyecto_finalizado"]; ?></td>
-                                        <td><?php echo $fila["nombre_estatus"]; ?></td>
                                     </tr>
                                     <?php }  ?>
                                 </tbody>
@@ -182,7 +166,6 @@
                                     <tr>
                                         <td><strong>Proyecto</strong></td>
                                         <td><strong>Tarea</strong></td>
-                                        <td><strong>Estatus</strong></td>
                                     </tr>
                                 </tfoot>
                             </table>
