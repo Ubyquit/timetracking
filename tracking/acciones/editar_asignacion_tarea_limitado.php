@@ -10,7 +10,6 @@
     $id_detalle = $_POST['id_detalle'];
     $tareas_id_tarea = $_POST['tarea'];
     $proyectos_id_proyecto = $_POST['proyecto_asignado'];
-    $id_responsable = $_POST['usuario_responsable'];
 
     
     $consulta = "UPDATE detalle SET tareas_id_tarea = '$tareas_id_tarea', proyectos_id_proyecto = '$proyectos_id_proyecto' where id_detalle = $id_detalle";
@@ -20,7 +19,7 @@
     if($resultado == 1){
         
         $consulta2 =  "INSERT INTO logs (accion_log, descripcion_log, fuente_log, fecha_log, responsable_log) 
-            VALUES ('UPDATE', 'Se han actualizado la tarea asignada del usuario $id_responsable', 'Tareas', now(), '$varsesion')";
+            VALUES ('UPDATE', 'ha actualizado su tarea id $id_detalle', 'Tareas', now(), '$varsesion')";
             mysqli_query($mysqli, $consulta2);
         }
 

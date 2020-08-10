@@ -12,7 +12,15 @@
     
     $consulta_tarea ="INSERT INTO tareas (nombre_tarea,fecha_creacion,usuarios_id_usuario)
     VALUES ('$nombre_tarea',now(),'$varsesion')";
-    mysqli_query($mysqli,$consulta_tarea);
+    $resultado = mysqli_query($mysqli,$consulta_tarea);
+
+    if($resultado == 1){
+        $consulta2 =  "INSERT INTO logs (accion_log, descripcion_log, fuente_log, fecha_log, responsable_log) 
+            VALUES ('INSERT', 'Se ha creado la tarea $nombre_tarea', 'Tareas', now(), '$varsesion')";
+            mysqli_query($mysqli, $consulta2);
+        }
+
+
     header("Location: tareas.php");
 
  ?>

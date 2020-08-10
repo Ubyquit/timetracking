@@ -15,7 +15,15 @@
     
     $consulta ="INSERT INTO detalle(tareas_id_tarea, proyectos_id_proyecto, id_asignador, id_responsable, estatus_id_estatus) 
     VALUES ('$tareas_id_tarea', '$proyectos_id_proyecto', '$varsesion', '$id_responsable', 1)";
-    mysqli_query($mysqli,$consulta);
+    $resultado = mysqli_query($mysqli,$consulta);
+
+    if($resultado == 1){
+        session_start();
+        $varsesion = $_SESSION["id"];
+        $consulta2 =  "INSERT INTO logs (accion_log, descripcion_log, fuente_log, fecha_log, responsable_log) 
+            VALUES ('INSERT', 'Se han creado la asignación al usuario $id_responsable', 'Tareas', now(), '$varsesion')";
+            mysqli_query($mysqli, $consulta2);
+        }
 
     header("Location: tareas_asignadas.php");
 
