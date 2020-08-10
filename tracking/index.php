@@ -91,11 +91,6 @@
                                             <div class="col-auto">
                                                 <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span><?php include "include/mis_tareas_finalizadas.php"?></span></div>
                                             </div>
-                                            <div class="col">
-                                                <div class="progress progress-sm">
-                                                    <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span class="sr-only">50%</span></div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-auto"><i class="fas fa-tasks fa-2x text-gray-300"></i></div>
