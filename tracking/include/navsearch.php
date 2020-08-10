@@ -64,9 +64,9 @@
                                             $resultado = mysqli_query($mysqli, $consulta);
                                             $fila = mysqli_fetch_array($resultado);
                                         ?>
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-envelope fa-fw"></i><span class="badge badge-danger badge-counter"><?php echo $fila["contar_usr"]; ?></span></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-users fa-fw"></i><span class="badge badge-danger badge-counter"><?php echo $fila["contar_usr"]; ?></span></a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in" role="menu">
-                                        <h6 class="dropdown-header">alerts center</h6>
+                                        <h6 class="dropdown-header">Usuarion nuevos</h6>
                                         <?php
                                         require_once '../conexion/conexion.php';
                                         /*Realizar seleccion de los ultimos 5 movimientos en la tabla logs*/

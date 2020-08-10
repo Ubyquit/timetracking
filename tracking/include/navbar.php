@@ -17,7 +17,7 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <?php 
                       if($rol_session == 2){
-                        echo  '<li class="nav-item" role="presentation"><a class="nav-link" href="usuarios.php"><i class="fas fa-table"></i><span>Usuarios</span></a></li>';
+                        echo  '<li class="nav-item" role="presentation"><a class="nav-link" href="usuarios.php"><i class="fas fa-users"></i><span>Usuarios</span></a></li>';
                         echo  '<li class="nav-item" role="presentation"><a class="nav-link" href="proyectos.php"><i class="fa fa-folder"></i><span>Proyectos</span></a></li>';
                         echo  '<!-- Nav Item - Pages Collapse Menu -->
                         <li class="nav-item">
