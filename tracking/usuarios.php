@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     $varsesion = $_SESSION["id"];
     $user_session = $_SESSION["nombre"];
     $user_email = $_SESSION["email"] ;
@@ -83,7 +82,10 @@
                                 </thead>
                                 <tbody>
                                 <?php 
-                                session_start();
+                                if(!isset($_SESSION)) 
+                                { 
+                                    session_start(); 
+                                } 
                                 $varsesion = $_SESSION["id"];
                                 require_once '../conexion/conexion.php';
                                 /*Realizar una unión entre la tabla usuarios y la tabla roles y realizar saltos entre campos de ambas tablas para  
