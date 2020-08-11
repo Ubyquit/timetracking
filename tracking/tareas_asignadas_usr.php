@@ -84,7 +84,10 @@
                                 </thead>
                                 <tbody>
                                 <?php 
-                                session_start();
+                                if(!isset($_SESSION)) 
+                                { 
+                                    session_start(); 
+                                } 
 
                                 $varsesion = $_SESSION["id"];
                                 require_once '../conexion/conexion.php';

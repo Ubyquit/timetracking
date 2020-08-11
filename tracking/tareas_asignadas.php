@@ -94,7 +94,10 @@
                                 </thead>
                                 <tbody>
                                 <?php 
-                                session_start();
+                                if(!isset($_SESSION)) 
+                                { 
+                                    session_start(); 
+                                } 
 
                                 $varsesion = $_SESSION["id"];
                                 require_once '../conexion/conexion.php';
@@ -132,7 +135,9 @@
                                         <td><?php echo $fila["fecha_asignacion"]; ?></td>
                                         <td>
                                             <?php if($fila["fecha_inicio"] == NULL){
-                                                echo '<a href="fecha_inicio.php?id='.$fila[id_detalle].'" class="btn btn-default btn-rounded"><i class="fa fa-clock" style="color:green" aria-hidden="true"></i>';
+                                                echo '<a href="fecha_inicio.php?id=';
+                                                echo $fila["id_detalle"]; 
+                                                echo '" class="btn btn-default btn-rounded"><i class="fa fa-clock" style="color:green" aria-hidden="true"></i>';
                                             }else{
                                                 echo $fila["fecha_inicio"]; 
                                             }
@@ -140,7 +145,9 @@
                                         </td>
                                         <td>
                                         <?php if($fila["fecha_fin"] == NULL && $fila["fecha_inicio"] != NULL){
-                                                echo '<a href="fecha_fin.php?id='.$fila[id_detalle].'" class="btn btn-default btn-rounded"><i class="fa fa-check" style="color:green" aria-hidden="true"></i>';
+                                                echo '<a href="fecha_fin.php?id=';
+                                                echo $fila["id_detalle"];
+                                                echo '" class="btn btn-default btn-rounded"><i class="fa fa-check" style="color:green" aria-hidden="true"></i>';
                                             }else{
                                                 echo $fila["fecha_fin"]; 
                                             }

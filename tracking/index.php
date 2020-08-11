@@ -2,6 +2,10 @@
     session_start();
 
     $varsesion = $_SESSION["id"];
+    $user_session = $_SESSION["nombre"];
+    $user_email = $_SESSION["email"] ;
+    $rol_session = $_SESSION["rol"];
+
 
     if($varsesion == null || $varsesion = ''){
     echo 'Usted no tiene acceso';
@@ -131,7 +135,6 @@
                                 <tbody>
                                 <?php 
                                 //Variable de sesión
-                                session_start();
                                 $varsesion = $_SESSION["id"];
                                 //Realizamos una conexión a la db
                                 require_once '../conexion/conexion.php';
