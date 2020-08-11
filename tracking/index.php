@@ -130,12 +130,13 @@
                                 </thead>
                                 <tbody>
                                 <?php 
+                                //Variable de sesión
                                 session_start();
-
                                 $varsesion = $_SESSION["id"];
+                                //Realizamos una conexión a la db
                                 require_once '../conexion/conexion.php';
-                                /*Realizar una unión entre la tabla usuarios y la tabla roles y realizar saltos entre campos de ambas tablas para  
-                                    visualizar todos los datos requeridos en el modulo de usuarios*/
+                                /*Visualizar nombre de proyectos y sumatoria de todas las horas de las tareas 
+                                terminadas por proyecto*/
                                     $consulta = "SELECT
                                     proyectos.nombre_proyecto,
                                     SEC_TO_TIME(SUM(TIMESTAMPDIFF(SECOND,fecha_inicio,fecha_fin))) AS proyecto_finalizado
